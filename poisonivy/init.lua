@@ -21,7 +21,7 @@ local walls_list = {
 	"default:stone_with_coal",
 	"default:stone_with_iron"
 },
-minetest.register_node('poisonivy:seedling', {
+minetest.register_node('hades_poisonivy:seedling', {
 	description = S("Poison ivy (seedling)"),
 	drawtype = 'plantlike',
 	waving = 1,
@@ -32,11 +32,11 @@ minetest.register_node('poisonivy:seedling', {
 	paramtype = 'light',
 	walkable = false,
 	groups = { snappy = 3, poisonivy=1, flora_block=1 },
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	buildable_to = true,
 })
 
-minetest.register_node('poisonivy:sproutling', {
+minetest.register_node('hades_poisonivy:sproutling', {
 	description = S("Poison ivy (sproutling)"),
 	drawtype = 'plantlike',
 	waving = 1,
@@ -47,11 +47,11 @@ minetest.register_node('poisonivy:sproutling', {
 	paramtype = 'light',
 	walkable = false,
 	groups = { snappy = 3, poisonivy=1, flora_block=1 },
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	buildable_to = true,
 })
 
-minetest.register_node('poisonivy:climbing', {
+minetest.register_node('hades_poisonivy:climbing', {
 	description = S("Poison ivy (climbing plant)"),
 	drawtype = 'signlike',
 	tiles = { 'poisonivy_climbing.png' },
@@ -62,7 +62,7 @@ minetest.register_node('poisonivy:climbing', {
 	paramtype2 = 'wallmounted',
 	walkable = false,
 	groups = { snappy = 3, poisonivy=1, flora_block=1 },
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "wallmounted",
 		--wall_side = = <default>
@@ -70,31 +70,33 @@ minetest.register_node('poisonivy:climbing', {
 	buildable_to = true,
 })
 
+--[[
 biome_lib.register_active_spawner({
 	spawn_delay = SPAWN_DELAY,
-	spawn_plants = {"poisonivy:seedling"},
+	spawn_plants = {"hades_poisonivy:seedling"},
 	avoid_radius = 10,
 	spawn_chance = SPAWN_CHANCE/10,
 	spawn_surfaces = {"default:dirt_with_grass"},
 	avoid_nodes = {"group:poisonivy", "group:flower", "group:flora"},
 	seed_diff = poisonivy_seed_diff,
 	light_min = 7,
-	alt_wallnode = "poisonivy:climbing",
+	alt_wallnode = "hades_poisonivy:climbing",
 	verticals_list = walls_list
 })
+--]]
 
 biome_lib.update_plant({
 	grow_delay = SPAWN_DELAY,
 	grow_chance = GROW_CHANCE,
-	grow_plant = "poisonivy:seedling",
-	grow_result = "poisonivy:sproutling",
+	grow_plant = "hades_poisonivy:seedling",
+	grow_result = "hades_poisonivy:sproutling",
 	grow_nodes = {"default:dirt_with_grass"}
 })
 
 biome_lib.update_plant({
 	grow_delay = GROW_DELAY,
 	grow_chance = GROW_CHANCE*2,
-	grow_plant = "poisonivy:climbing",
+	grow_plant = "hades_poisonivy:climbing",
 	need_wall = true,
 	grow_vertically = true,
 	verticals_list = walls_list,

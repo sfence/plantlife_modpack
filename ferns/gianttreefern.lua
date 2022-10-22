@@ -16,7 +16,7 @@ local S = minetest.get_translator("ferns")
 abstract_ferns.grow_giant_tree_fern = function(pos)
 	local pos_aux = {x = pos.x, y = pos.y + 1, z = pos.z}
 	local name = minetest.get_node(pos_aux).name
-	if name ~= "air" and name ~= "ferns:sapling_giant_tree_fern"
+	if name ~= "air" and name ~= "hades_ferns:sapling_giant_tree_fern"
 			and name ~= "default:junglegrass" then
 		return
 	end
@@ -66,15 +66,15 @@ abstract_ferns.grow_giant_tree_fern = function(pos)
 	for i = 1, size-3 do
 		pos_aux.y = pos.y + i
 		local name = minetest.get_node(pos_aux).name
-		if not (name == "air" or (i == 1 and name == "ferns:sapling_giant_tree_fern")) then
+		if not (name == "air" or (i == 1 and name == "hades_ferns:sapling_giant_tree_fern")) then
 			brk = true
 			break
 		end
-		minetest.swap_node({x = pos.x, y = pos.y + i, z = pos.z}, {name="ferns:fern_trunk_big"})
+		minetest.swap_node({x = pos.x, y = pos.y + i, z = pos.z}, {name="hades_ferns:fern_trunk_big"})
 	end
 	if not brk then
-		minetest.swap_node({x = pos.x, y = pos.y + size-2, z = pos.z}, {name="ferns:fern_trunk_big_top"})
-		minetest.swap_node({x = pos.x, y = pos.y + size-1, z = pos.z}, {name="ferns:tree_fern_leaves_giant"})
+		minetest.swap_node({x = pos.x, y = pos.y + size-2, z = pos.z}, {name="hades_ferns:fern_trunk_big_top"})
+		minetest.swap_node({x = pos.x, y = pos.y + size-1, z = pos.z}, {name="hades_ferns:tree_fern_leaves_giant"})
 
 		-- all the checking for air below is to prevent some ugly bugs (incomplete trunks of neighbouring trees), it's a bit slower, but worth the result
 
@@ -87,7 +87,7 @@ abstract_ferns.grow_giant_tree_fern = function(pos)
 			-- add leaves so long as the destination nodes are air
 			for j = 1, 3 do
 				if minetest.get_node(positions[j]).name == "air" then
-					minetest.swap_node(positions[j], {name="ferns:tree_fern_leave_big"})
+					minetest.swap_node(positions[j], {name="hades_ferns:tree_fern_leave_big"})
 				else
 					endpos = j
 					break
@@ -95,7 +95,7 @@ abstract_ferns.grow_giant_tree_fern = function(pos)
 			end
 			-- add the terminating leaf if required and possible
 			if endpos == 4 and minetest.get_node(positions[endpos]).name == "air" then
-				minetest.swap_node(positions[endpos], {name="ferns:tree_fern_leave_big_end", param2=rot})
+				minetest.swap_node(positions[endpos], {name="hades_ferns:tree_fern_leave_big_end", param2=rot})
 			end
 		end
 	end
@@ -104,7 +104,7 @@ end
 -----------------------------------------------------------------------------------------------
 -- GIANT TREE FERN LEAVES
 -----------------------------------------------------------------------------------------------
-minetest.register_node("ferns:tree_fern_leaves_giant", {
+minetest.register_node("hades_ferns:tree_fern_leaves_giant", {
 	description = S("Tree Fern Crown (Dicksonia)"),
 	drawtype = "plantlike",
 	visual_scale = math.sqrt(11),
@@ -126,18 +126,18 @@ minetest.register_node("ferns:tree_fern_leaves_giant", {
 				-- occasionally, drop a second sapling instead of leaves
 				-- (extra saplings can also be obtained by replanting and
 				--  reharvesting leaves)
-				items = {"ferns:sapling_giant_tree_fern"},
+				items = {"hades_ferns:sapling_giant_tree_fern"},
 				rarity = 10,
 			},
 			{
-				items = {"ferns:sapling_giant_tree_fern"},
+				items = {"hades_ferns:sapling_giant_tree_fern"},
 			},
 			{
-				items = {"ferns:tree_fern_leaves_giant"},
+				items = {"hades_ferns:tree_fern_leaves_giant"},
 			}
 		}
 	},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-7/16, -1/2, -7/16, 7/16, 0, 7/16},
@@ -146,7 +146,7 @@ minetest.register_node("ferns:tree_fern_leaves_giant", {
 -----------------------------------------------------------------------------------------------
 -- GIANT TREE FERN LEAVE PART
 -----------------------------------------------------------------------------------------------
-minetest.register_node("ferns:tree_fern_leave_big", {
+minetest.register_node("hades_ferns:tree_fern_leave_big", {
 	description = S("Giant Tree Fern Leaves"),
 	drawtype = "raillike",
 	paramtype = "light",
@@ -161,11 +161,11 @@ minetest.register_node("ferns:tree_fern_leave_big", {
 		not_in_creative_inventory=1
 	},
 	drop = "",
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	after_destruct = function(pos,oldnode)
 		for _, d in pairs({{x=-1,z=0},{x=1,z=0},{x=0,z=-1},{x=0,z=1}}) do
 			local node = minetest.get_node({x=pos.x+d.x,y=pos.y+1,z=pos.z+d.z})
-			if node.name == "ferns:tree_fern_leave_big" then
+			if node.name == "hades_ferns:tree_fern_leave_big" then
 				minetest.dig_node({x=pos.x+d.x,y=pos.y+1,z=pos.z+d.z})
 			end
 		end
@@ -175,7 +175,7 @@ minetest.register_node("ferns:tree_fern_leave_big", {
 -----------------------------------------------------------------------------------------------
 -- GIANT TREE FERN LEAVE END
 -----------------------------------------------------------------------------------------------
-minetest.register_node("ferns:tree_fern_leave_big_end", {
+minetest.register_node("hades_ferns:tree_fern_leave_big_end", {
 	description = S("Giant Tree Fern Leave End"),
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -198,13 +198,13 @@ minetest.register_node("ferns:tree_fern_leave_big_end", {
 		not_in_creative_inventory=1
 	},
 	drop = "",
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
 -- GIANT TREE FERN TRUNK TOP
 -----------------------------------------------------------------------------------------------
-minetest.register_node("ferns:fern_trunk_big_top", {
+minetest.register_node("hades_ferns:fern_trunk_big_top", {
 	description = S("Giant Fern Trunk"),
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -234,14 +234,14 @@ minetest.register_node("ferns:fern_trunk_big_top", {
 		not_in_creative_inventory=1,
 		leafdecay=3 -- to support vines
 	},
-	drop = "ferns:fern_trunk_big",
-	sounds = default.node_sound_wood_defaults(),
+	drop = "hades_ferns:fern_trunk_big",
+	sounds = hades_sounds.node_sound_wood_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
 -- GIANT TREE FERN TRUNK
 -----------------------------------------------------------------------------------------------
-minetest.register_node("ferns:fern_trunk_big", {
+minetest.register_node("hades_ferns:fern_trunk_big", {
 	description = S("Giant Fern Trunk"),
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -259,12 +259,12 @@ minetest.register_node("ferns:fern_trunk_big", {
 		fixed = {-1/4, -1/2, -1/4, 1/4, 1/2, 1/4},
 	},
 	groups = {tree=1,choppy=2,oddly_breakable_by_hand=2,flammable=3,wood=1},
-	sounds = default.node_sound_wood_defaults(),
+	sounds = hades_sounds.node_sound_wood_defaults(),
 	after_destruct = function(pos,oldnode)
         local node = minetest.get_node({x=pos.x,y=pos.y+1,z=pos.z})
-        if node.name == "ferns:fern_trunk_big" or node.name == "ferns:fern_trunk_big_top" then
+        if node.name == "hades_ferns:fern_trunk_big" or node.name == "hades_ferns:fern_trunk_big_top" then
             minetest.dig_node({x=pos.x,y=pos.y+1,z=pos.z})
-            minetest.add_item(pos,"ferns:fern_trunk_big")
+            minetest.add_item(pos,"hades_ferns:fern_trunk_big")
         end
     end,
 })
@@ -272,7 +272,7 @@ minetest.register_node("ferns:fern_trunk_big", {
 -----------------------------------------------------------------------------------------------
 -- GIANT TREE FERN SAPLING
 -----------------------------------------------------------------------------------------------
-minetest.register_node("ferns:sapling_giant_tree_fern", {
+minetest.register_node("hades_ferns:sapling_giant_tree_fern", {
 	description = S("Giant Tree Fern Sapling"),
 	drawtype = "plantlike",
 	paramtype = "light",
@@ -280,7 +280,7 @@ minetest.register_node("ferns:sapling_giant_tree_fern", {
 	inventory_image = "ferns_sapling_tree_fern_giant.png",
 	walkable = false,
 	groups = {snappy=3,flammable=2,flora=1,attached_node=1,sapling=1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-7/16, -1/2, -7/16, 7/16, 0, 7/16},
@@ -289,7 +289,7 @@ minetest.register_node("ferns:sapling_giant_tree_fern", {
 
 -- abm
 minetest.register_abm({
-	nodenames = "ferns:sapling_giant_tree_fern",
+	nodenames = "hades_ferns:sapling_giant_tree_fern",
 	interval = 1000,
 	chance = 4,
 	action = function(pos, node, _, _)

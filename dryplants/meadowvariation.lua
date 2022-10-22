@@ -9,7 +9,7 @@
 
 abstract_dryplants.grow_grass_variation = function(pos)
 	local right_here = {x=pos.x, y=pos.y, z=pos.z}
-	minetest.swap_node(right_here, {name="dryplants:grass_short"})
+	minetest.swap_node(right_here, {name="hades_dryplants:grass_short"})
 end
 
 biome_lib.register_on_generate({

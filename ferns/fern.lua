@@ -21,15 +21,15 @@ local S = minetest.get_translator("ferns")
 -- minetest-0.5: Begin
 local default_ferns = minetest.registered_items["default:fern_1"] or false
 if default_ferns then
-	minetest.register_alias("ferns:fern_03", "default:fern_3")
-	minetest.register_alias("ferns:fern_02", "default:fern_2")
-	minetest.register_alias("ferns:fern_01", "default:fern_1")
+	minetest.register_alias("hades_ferns:fern_03", "default:fern_3")
+	minetest.register_alias("hades_ferns:fern_02", "default:fern_2")
+	minetest.register_alias("hades_ferns:fern_01", "default:fern_1")
 end
 -- minetest-0.5: End
-minetest.register_alias("archaeplantae:fern",		"ferns:fern_03")
-minetest.register_alias("archaeplantae:fern_mid",	"ferns:fern_02")
-minetest.register_alias("archaeplantae:fern_small",	"ferns:fern_01")
-minetest.register_alias("ferns:fern_04",		"ferns:fern_02") -- for placing
+minetest.register_alias("archaeplantae:fern",		"hades_ferns:fern_03")
+minetest.register_alias("archaeplantae:fern_mid",	"hades_ferns:fern_02")
+minetest.register_alias("archaeplantae:fern_small",	"hades_ferns:fern_01")
+minetest.register_alias("hades_ferns:fern_04",		"hades_ferns:fern_02") -- for placing
 
 local nodenames = {}
 
@@ -43,12 +43,12 @@ local function create_nodes()
 		if i == 1 then
 			node_on_place = function(itemstack, placer, pointed_thing)
 				-- place a random fern
-				local stack = ItemStack("ferns:fern_0"..math.random(1,4))
+				local stack = ItemStack("hades_ferns:fern_0"..math.random(1,4))
 				local ret = minetest.item_place(stack, placer, pointed_thing)
-				return ItemStack("ferns:fern_01 "..itemstack:get_count()-(1-ret:get_count()))	-- TODO FIXME?
+				return ItemStack("hades_ferns:fern_01 "..itemstack:get_count()-(1-ret:get_count()))	-- TODO FIXME?
 			end
 		end
-		nodenames[i] = "ferns:fern_"..string.format("%02d", i)
+		nodenames[i] = "hades_ferns:fern_"..string.format("%02d", i)
 		minetest.register_node(nodenames[i], {
 			description = descs[i] or (S("Lady-fern (Athyrium)").." " .. string.format("%02d", i)),
 			inventory_image = "ferns_fern.png",
@@ -59,12 +59,12 @@ local function create_nodes()
 			walkable = false,
 			buildable_to = true,
 			groups = {snappy=3,flammable=2,attached_node=1,not_in_creative_inventory=1},
-			sounds = default.node_sound_leaves_defaults(),
+			sounds = hades_sounds.node_sound_leaves_defaults(),
 			selection_box = {
 				type = "fixed",
 				fixed = {-7/16, -1/2, -7/16, 7/16, 0, 7/16},
 			},
-			drop = "ferns:fern_01",
+			drop = "hades_ferns:fern_01",
 			on_place = node_on_place
 		})
 	end
@@ -76,7 +76,7 @@ end
 
 if default_ferns then
 	for i = 1, 3 do
-		nodenames[i] = "ferns:fern_"..string.format("%02d", i)
+		nodenames[i] = "hades_ferns:fern_"..string.format("%02d", i)
 	end
 else
 	create_nodes()

@@ -8,9 +8,10 @@ abstract_woodsoils = {}
 
 -- support for i18n
 local S = minetest.get_translator("woodsoils")
+local modpath = minetest.get_modpath(minetest.get_current_modname())
 
-dofile(minetest.get_modpath("woodsoils").."/nodes.lua")
-dofile(minetest.get_modpath("woodsoils").."/generating.lua")
+dofile(modpath.."/nodes.lua")
+dofile(modpath.."/generating.lua")
 
 -- felt like playing a bit :D
 --[[print("  _____                              __")

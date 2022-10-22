@@ -27,11 +27,11 @@ local function create_nodes()
 	}
 
 	for i = 1, 4 do
-		local node_name = "ferns:horsetail_" .. string.format("%02d", i)
+		local node_name = "hades_ferns:horsetail_" .. string.format("%02d", i)
 		local node_img = "ferns_horsetail_" .. string.format("%02d", i) .. ".png"
 		local node_desc
 		local node_on_use = nil
-		local node_drop = "ferns:horsetail_04"
+		local node_drop = "hades_ferns:horsetail_04"
 
 		if i == 1 then
 			node_desc = S("Young Horsetail (Equisetum)")
@@ -54,7 +54,7 @@ local function create_nodes()
 			walkable = false,
 			buildable_to = true,
 			groups = {snappy=3,flammable=2,attached_node=1,horsetail=1},
-			sounds = default.node_sound_leaves_defaults(),
+			sounds = hades_sounds.node_sound_leaves_defaults(),
 			selection_box = {
 				type = "fixed",
 				fixed = selection_boxes[i],

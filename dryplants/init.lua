@@ -15,20 +15,21 @@ abstract_dryplants = {}
 
 -- support for i18n
 local S = minetest.get_translator("dryplants")
+local modpath = minetest.get_modpath(minetest.get_current_modname())
 
-dofile(minetest.get_modpath("dryplants").."/crafting.lua")
-dofile(minetest.get_modpath("dryplants").."/settings.txt")
-dofile(minetest.get_modpath("dryplants").."/reed.lua")
+dofile(modpath.."/crafting.lua")
+dofile(modpath.."/settings.txt")
+dofile(modpath.."/reed.lua")
 if REEDMACE_GENERATES == true then
-dofile(minetest.get_modpath("dryplants").."/reedmace.lua")
+dofile(modpath.."/reedmace.lua")
 end
 if SMALL_JUNCUS_GENERATES == true then
-dofile(minetest.get_modpath("dryplants").."/juncus.lua")
+dofile(modpath.."/juncus.lua")
 end
 if EXTRA_TALL_GRASS_GENERATES == true then
-dofile(minetest.get_modpath("dryplants").."/moregrass.lua")
+dofile(modpath.."/moregrass.lua")
 end
---dofile(minetest.get_modpath("dryplants").."/meadowvariation.lua")
+--dofile(modpath.."/meadowvariation.lua")
 
 -----------------------------------------------------------------------------------------------
 -- Sickle
@@ -85,7 +86,7 @@ local function sickle_on_use(itemstack, user, pointed_thing, uses)
 		-- check if flora but no flower
 		if minetest.get_item_group(under.name, "flora") == 1 and minetest.get_item_group(under.name, "flower") == 0 then
 			-- turn the node into cut grass, wear out item and play sound
-			minetest.swap_node(pt.under, {name="dryplants:grass"})
+			minetest.swap_node(pt.under, {name="hades_dryplants:grass"})
 		else -- otherwise dig the node
 			if not minetest.node_dig(pt.under, under, user) then
 				return
@@ -101,8 +102,8 @@ local function sickle_on_use(itemstack, user, pointed_thing, uses)
 		if minetest.is_protected(above_pos, user:get_player_name()) or above.name ~= "air" then
 			return
 		end
-		minetest.swap_node(pt.under, {name="dryplants:grass_short"})
-		minetest.swap_node(above_pos, {name="dryplants:grass"})
+		minetest.swap_node(pt.under, {name="hades_dryplants:grass_short"})
+		minetest.swap_node(above_pos, {name="hades_dryplants:grass"})
 		minetest.sound_play("default_dig_crumbly", {
 			pos = pt.under,
 			gain = 0.5,
@@ -112,7 +113,7 @@ local function sickle_on_use(itemstack, user, pointed_thing, uses)
 	end
 end
 -- the tool
-minetest.register_tool("dryplants:sickle", {
+minetest.register_tool("hades_dryplants:sickle", {
 	description = S("Sickle"),
 	inventory_image = "dryplants_sickle.png",
 	on_use = function(itemstack, user, pointed_thing)
@@ -123,7 +124,7 @@ minetest.register_tool("dryplants:sickle", {
 -----------------------------------------------------------------------------------------------
 -- Cut Grass
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:grass", {
+minetest.register_node("hades_dryplants:grass", {
 	description = S("Cut Grass"),
 	inventory_image = "dryplants_grass.png",
 	wield_image = "dryplants_grass.png",
@@ -136,25 +137,25 @@ minetest.register_node("dryplants:grass", {
         fixed = {-0.5   , -0.5   , -0.5   ,   0.5   , -0.4375,  0.5   },
     },
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
 -- Cut Grass becomes Hay over time
 -----------------------------------------------------------------------------------------------
 minetest.register_abm({
-	nodenames = {"dryplants:grass"},
+	nodenames = {"hades_dryplants:grass"},
 	interval = HAY_DRYING_TIME, --1200, -- 20 minutes: a minetest-day/night-cycle
 	chance = 1,
 	action = function(pos)
-		minetest.swap_node(pos, {name="dryplants:hay"})
+		minetest.swap_node(pos, {name="hades_dryplants:hay"})
 	end,
 })
 
 -----------------------------------------------------------------------------------------------
 -- Hay
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:hay", {
+minetest.register_node("hades_dryplants:hay", {
 	description = S("Hay"),
 	inventory_image = "dryplants_hay.png",
 	wield_image = "dryplants_hay.png",
@@ -167,19 +168,19 @@ minetest.register_node("dryplants:hay", {
         fixed = {-0.5   , -0.5   , -0.5   ,   0.5   , -0.4375,  0.5   },
     },
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
 -- Short Grass
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:grass_short", {
+minetest.register_node("hades_dryplants:grass_short", {
 	description = S("Short Grass"),
 	tiles = {"default_grass.png^dryplants_grass_short.png", "default_dirt.png", "default_dirt.png^default_grass_side.png^dryplants_grass_short_side.png"},
 	is_ground_content = true,
 	groups = {crumbly=3,soil=1,not_in_creative_inventory=1},
 	--drop = 'default:dirt',
-	sounds = default.node_sound_dirt_defaults({
+	sounds = hades_sounds.node_sound_dirt_defaults({
 		footstep = {name="default_grass_footstep", gain=0.4},
 	}),
 })
@@ -188,13 +189,13 @@ minetest.register_node("dryplants:grass_short", {
 -- Short Grass becomes Dirt with Grass over time
 -----------------------------------------------------------------------------------------------
 minetest.register_abm({
-	nodenames = {"dryplants:grass_short"},
+	nodenames = {"hades_dryplants:grass_short"},
 	interval = GRASS_REGROWING_TIME, --1200, -- 20 minutes: a minetest-day/night-cycle
 	chance = 100/GRASS_REGROWING_CHANCE,
 	action = function(pos)
 		-- Only become dirt with grass if no cut grass or hay lies on top
 		local above = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
-		if above.name ~= "dryplants:grass" and above.name ~= "dryplants:hay" then
+		if above.name ~= "hades_dryplants:grass" and above.name ~= "hades_dryplants:hay" then
 			minetest.swap_node(pos, {name="default:dirt_with_grass"})
 		end
 	end,

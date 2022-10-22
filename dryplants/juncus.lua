@@ -17,14 +17,14 @@ abstract_dryplants.grow_juncus = function(pos)
 	if minetest.get_node(right_here).name == "air"  -- instead of check_air = true,
 	or minetest.get_node(right_here).name == "default:junglegrass" then
 		if juncus_type == 2 then
-			minetest.swap_node(right_here, {name="dryplants:juncus_02"})
+			minetest.swap_node(right_here, {name="hades_dryplants:juncus_02"})
 		else
-			minetest.swap_node(right_here, {name="dryplants:juncus"})
+			minetest.swap_node(right_here, {name="hades_dryplants:juncus"})
 		end
 	end
 end
 
-minetest.register_node("dryplants:juncus", {
+minetest.register_node("hades_dryplants:juncus", {
 	description = S("Juncus"),
 	drawtype = "plantlike",
 	visual_scale = math.sqrt(8),
@@ -40,7 +40,7 @@ minetest.register_node("dryplants:juncus", {
 		flora=1
 		--not_in_creative_inventory=1
 	},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-7/16, -1/2, -7/16, 7/16, 0, 7/16},
@@ -56,9 +56,9 @@ minetest.register_node("dryplants:juncus", {
 		local juncus_type = math.random(2,3)
 		local right_here = {x=pos.x, y=pos.y+1, z=pos.z}
 		if juncus_type == 2 then
-			minetest.swap_node(right_here, {name="dryplants:juncus_02"})
+			minetest.swap_node(right_here, {name="hades_dryplants:juncus_02"})
 		else
-			minetest.swap_node(right_here, {name="dryplants:juncus"})
+			minetest.swap_node(right_here, {name="hades_dryplants:juncus"})
 		end
 		if not minetest.setting_getbool("creative_mode") then
 			itemstack:take_item()
@@ -66,7 +66,7 @@ minetest.register_node("dryplants:juncus", {
 		return itemstack
 	end,
 })
-minetest.register_node("dryplants:juncus_02", {
+minetest.register_node("hades_dryplants:juncus_02", {
 	description = S("Juncus"),
 	drawtype = "plantlike",
 	visual_scale = math.sqrt(8),
@@ -81,12 +81,12 @@ minetest.register_node("dryplants:juncus_02", {
 		flora=1,
 		not_in_creative_inventory=1
 	},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-7/16, -1/2, -7/16, 7/16, 0, 7/16},
 	},
-	drop = "dryplants:juncus",
+	drop = "hades_dryplants:juncus",
 })
 -----------------------------------------------------------------------------------------------
 -- GENERATE SMALL JUNCUS

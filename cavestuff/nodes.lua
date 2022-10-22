@@ -8,7 +8,7 @@ local cbox = {
 	fixed = {-5/16, -8/16, -6/16, 5/16, -1/32, 5/16},
 }
 
-minetest.register_node("cavestuff:pebble_1",{
+minetest.register_node("hades_cavestuff:pebble_1",{
 	description = S("Pebble"),
 	drawtype = "mesh",
 	mesh = "cavestuff_pebble.obj",
@@ -20,28 +20,28 @@ minetest.register_node("cavestuff:pebble_1",{
 	 collision_box = cbox,
 	 on_place = function(itemstack, placer, pointed_thing)
 		-- place a random pebble node
-		local stack = ItemStack("cavestuff:pebble_"..math.random(1,2))
+		local stack = ItemStack("hades_cavestuff:pebble_"..math.random(1,2))
 		local ret = minetest.item_place(stack, placer, pointed_thing)
-		return ItemStack("cavestuff:pebble_1 "..itemstack:get_count()-(1-ret:get_count()))
+		return ItemStack("hades_cavestuff:pebble_1 "..itemstack:get_count()-(1-ret:get_count()))
 	end,
-	 sounds = default.node_sound_stone_defaults(),
+	 sounds = hades_sounds.node_sound_stone_defaults(),
 })
 
-minetest.register_node("cavestuff:pebble_2",{
+minetest.register_node("hades_cavestuff:pebble_2",{
 	drawtype = "mesh",
 	mesh = "cavestuff_pebble.obj",
 	 tiles = {"undergrowth_pebble.png"},
-	drop = "cavestuff:pebble_1",
+	drop = "hades_cavestuff:pebble_1",
 	 tiles = {"undergrowth_pebble.png"},
 	 paramtype = "light",
 	paramtype2 = "facedir",
 	 groups = {cracky=3, stone=1, attached_node=1, not_in_creative_inventory=1},
 	selection_box = cbox,
 	collision_box = cbox,
-	 sounds = default.node_sound_stone_defaults(),
+	 sounds = hades_sounds.node_sound_stone_defaults(),
 })
 
-minetest.register_node("cavestuff:desert_pebble_1",{
+minetest.register_node("hades_cavestuff:desert_pebble_1",{
 	description = S("Desert Pebble"),
 	drawtype = "mesh",
 	mesh = "cavestuff_pebble.obj",
@@ -53,29 +53,29 @@ minetest.register_node("cavestuff:desert_pebble_1",{
 	collision_box = cbox,
 	 on_place = function(itemstack, placer, pointed_thing)
 		-- place a random pebble node
-		local stack = ItemStack("cavestuff:desert_pebble_"..math.random(1,2))
+		local stack = ItemStack("hades_cavestuff:desert_pebble_"..math.random(1,2))
 		local ret = minetest.item_place(stack, placer, pointed_thing)
-		return ItemStack("cavestuff:desert_pebble_1 "..itemstack:get_count()-(1-ret:get_count()))
+		return ItemStack("hades_cavestuff:desert_pebble_1 "..itemstack:get_count()-(1-ret:get_count()))
 	end,
-	 sounds = default.node_sound_stone_defaults(),
+	 sounds = hades_sounds.node_sound_stone_defaults(),
 })
 
-minetest.register_node("cavestuff:desert_pebble_2",{
+minetest.register_node("hades_cavestuff:desert_pebble_2",{
 	drawtype = "mesh",
 	mesh = "cavestuff_pebble.obj",
-	drop = "cavestuff:desert_pebble_1",
+	drop = "hades_cavestuff:desert_pebble_1",
 	 tiles = {"default_desert_stone.png"},
 	 paramtype = "light",
 	paramtype2 = "facedir",
 	 groups = {cracky=3, stone=1, attached_node=1, not_in_creative_inventory=1},
 	selection_box = cbox,
 	collision_box = cbox,
-	 sounds = default.node_sound_stone_defaults(),
+	 sounds = hades_sounds.node_sound_stone_defaults(),
 })
 
 --Staclactites
 
-minetest.register_node("cavestuff:stalactite_1",{
+minetest.register_node("hades_cavestuff:stalactite_1",{
 	drawtype="nodebox",
 	tiles = {"undergrowth_pebble.png"},
 	groups = {cracky=3,attached_node=1},
@@ -110,7 +110,7 @@ minetest.register_node("cavestuff:stalactite_1",{
 		and minetest.get_node(above).name == "air"
 		then
 			minetest.swap_node(place, {
-				name = "cavestuff:stalactite_"..math.random(1,3),
+				name = "hades_cavestuff:stalactite_"..math.random(1,3),
 				param2 = minetest.dir_to_wallmounted(vector.multiply(dir, -1))
 			})
 			if not minetest.setting_getbool("creative_mode") then
@@ -121,11 +121,11 @@ minetest.register_node("cavestuff:stalactite_1",{
 	end,
 })
 
-minetest.register_node("cavestuff:stalactite_2",{
+minetest.register_node("hades_cavestuff:stalactite_2",{
 	drawtype="nodebox",
 	tiles = {"undergrowth_pebble.png"},
 	groups = {cracky=3,attached_node=1,not_in_creative_inventory=1},
-	drop = "cavestuff:stalactite_1",
+	drop = "hades_cavestuff:stalactite_1",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	node_box = {
@@ -139,11 +139,11 @@ minetest.register_node("cavestuff:stalactite_2",{
 	},
 })
 
-minetest.register_node("cavestuff:stalactite_3",{
+minetest.register_node("hades_cavestuff:stalactite_3",{
 	drawtype="nodebox",
 	tiles = {"undergrowth_pebble.png"},
 	groups = {cracky=3,attached_node=1,not_in_creative_inventory=1},
-	drop = "cavestuff:stalactite_1",
+	drop = "hades_cavestuff:stalactite_1",
 	paramtype = "light",
 	paramtype2 = "wallmounted",
 	node_box = {

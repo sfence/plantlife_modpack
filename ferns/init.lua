@@ -10,26 +10,27 @@ abstract_ferns = {}
 
 -- support for i18n
 local S = minetest.get_translator("ferns")
+local modpath = minetest.get_modpath(minetest.get_current_modname())
 
-dofile(minetest.get_modpath("ferns").."/settings.lua")
+dofile(modpath.."/settings.lua")
 
 if abstract_ferns.config.enable_lady_fern == true then
-	dofile(minetest.get_modpath("ferns").."/fern.lua")
+	dofile(modpath.."/fern.lua")
 end
 
 if abstract_ferns.config.enable_horsetails == true then
-	dofile(minetest.get_modpath("ferns").."/horsetail.lua")
+	dofile(modpath.."/horsetail.lua")
 end
 
 if abstract_ferns.config.enable_treefern == true then
-	dofile(minetest.get_modpath("ferns").."/treefern.lua")
+	dofile(modpath.."/treefern.lua")
 end
 
 if abstract_ferns.config.enable_giant_treefern == true then
-	dofile(minetest.get_modpath("ferns").."/gianttreefern.lua")
+	dofile(modpath.."/gianttreefern.lua")
 end
 
-dofile(minetest.get_modpath("ferns").."/crafting.lua")
+dofile(modpath.."/crafting.lua")
 
 
 -----------------------------------------------------------------------------
@@ -46,23 +47,23 @@ if run_tests then
 	-- Check node names
 	if abstract_ferns.config.enable_horsetails then
 		print("[Mod] " ..title.. " Checking horsetail item strings")
-		assert(minetest.registered_items["ferns:horsetail_01"] ~= nil)
-		assert(minetest.registered_items["ferns:horsetail_02"] ~= nil)
-		assert(minetest.registered_items["ferns:horsetail_03"] ~= nil)
-		assert(minetest.registered_items["ferns:horsetail_04"] ~= nil)
+		assert(minetest.registered_items["hades_ferns:horsetail_01"] ~= nil)
+		assert(minetest.registered_items["hades_ferns:horsetail_02"] ~= nil)
+		assert(minetest.registered_items["hades_ferns:horsetail_03"] ~= nil)
+		assert(minetest.registered_items["hades_ferns:horsetail_04"] ~= nil)
 	end
 	if abstract_ferns.config.enable_lady_fern then
 		print("[Mod] ".. title .." Checking lady fern item strings")
-		assert(minetest.registered_items["ferns:fern_01"] ~= nil)
-		assert(minetest.registered_items["ferns:fern_02"] ~= nil)
-		assert(minetest.registered_items["ferns:fern_03"] ~= nil)
+		assert(minetest.registered_items["hades_ferns:fern_01"] ~= nil)
+		assert(minetest.registered_items["hades_ferns:fern_02"] ~= nil)
+		assert(minetest.registered_items["hades_ferns:fern_03"] ~= nil)
 	end
 	if abstract_ferns.config.enable_treefern then
 		print("[Mod] ".. title .." Checking tree fern item strings")
-		assert(minetest.registered_items["ferns:tree_fern_leaves"] ~= nil)
-		assert(minetest.registered_items["ferns:tree_fern_leaves_02"] ~= nil)
-		assert(minetest.registered_items["ferns:fern_trunk"] ~= nil)
-		assert(minetest.registered_items["ferns:sapling_tree_fern"] ~= nil)
+		assert(minetest.registered_items["hades_ferns:tree_fern_leaves"] ~= nil)
+		assert(minetest.registered_items["hades_ferns:tree_fern_leaves_02"] ~= nil)
+		assert(minetest.registered_items["hades_ferns:fern_trunk"] ~= nil)
+		assert(minetest.registered_items["hades_ferns:sapling_tree_fern"] ~= nil)
 	end
 end
 

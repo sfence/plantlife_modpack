@@ -31,20 +31,20 @@ abstract_dryplants.grow_reedmace = function(pos)
 	local pos_02 = {x = pos.x, y = pos.y + 2, z = pos.z}
 	local pos_03 = {x = pos.x, y = pos.y + 3, z = pos.z}
 	if minetest.get_node(pos_01).name == "air"  -- bug fix
-	or minetest.get_node(pos_01).name == "dryplants:reedmace_sapling" then
+	or minetest.get_node(pos_01).name == "hades_dryplants:reedmace_sapling" then
 		if minetest.get_node(pos_02).name ~= "air" then
-			minetest.swap_node(pos_01, {name="dryplants:reedmace_top"})
+			minetest.swap_node(pos_01, {name="hades_dryplants:reedmace_top"})
 		elseif minetest.get_node(pos_03).name ~= "air" then
-			minetest.swap_node(pos_01, {name="dryplants:reedmace_height_2"})
+			minetest.swap_node(pos_01, {name="hades_dryplants:reedmace_height_2"})
 		elseif size == 1 then
-			minetest.swap_node(pos_01, {name="dryplants:reedmace_top"})
+			minetest.swap_node(pos_01, {name="hades_dryplants:reedmace_top"})
 		elseif size == 2 then
-			minetest.swap_node(pos_01, {name="dryplants:reedmace_height_2"})
+			minetest.swap_node(pos_01, {name="hades_dryplants:reedmace_height_2"})
 		elseif size == 3 then
 			if spikes == 1 then
-				minetest.swap_node(pos_01, {name="dryplants:reedmace_height_3_spikes"})
+				minetest.swap_node(pos_01, {name="hades_dryplants:reedmace_height_3_spikes"})
 			else
-				minetest.swap_node(pos_01, {name="dryplants:reedmace_height_3"})
+				minetest.swap_node(pos_01, {name="hades_dryplants:reedmace_height_3"})
 			end
 		end
 	end
@@ -57,21 +57,21 @@ abstract_dryplants.grow_reedmace_water = function(pos)
 	local pos_02 = {x = pos.x, y = pos.y + 2, z = pos.z}
 	local pos_03 = {x = pos.x, y = pos.y + 3, z = pos.z}
 	local pos_04 = {x = pos.x, y = pos.y + 4, z = pos.z}
-	minetest.add_entity(pos_01, "dryplants:reedmace_water_entity")
+	minetest.add_entity(pos_01, "hades_dryplants:reedmace_water_entity")
 	if minetest.get_node(pos_02).name == "air" then -- bug fix
 		if minetest.get_node(pos_03).name ~= "air" then
-			minetest.swap_node(pos_02, {name="dryplants:reedmace_top"})
+			minetest.swap_node(pos_02, {name="hades_dryplants:reedmace_top"})
 		elseif minetest.get_node(pos_04).name ~= "air" then
-			minetest.swap_node(pos_02, {name="dryplants:reedmace_height_2"})
+			minetest.swap_node(pos_02, {name="hades_dryplants:reedmace_height_2"})
 		elseif size == 1 then
-			minetest.swap_node(pos_02, {name="dryplants:reedmace_top"})
+			minetest.swap_node(pos_02, {name="hades_dryplants:reedmace_top"})
 		elseif size == 2 then
-			minetest.swap_node(pos_02, {name="dryplants:reedmace_height_2"})
+			minetest.swap_node(pos_02, {name="hades_dryplants:reedmace_height_2"})
 		elseif size == 3 then
 			if spikes == 1 then
-				minetest.swap_node(pos_02, {name="dryplants:reedmace_height_3_spikes"})
+				minetest.swap_node(pos_02, {name="hades_dryplants:reedmace_height_3_spikes"})
 			else
-				minetest.swap_node(pos_02, {name="dryplants:reedmace_height_3"})
+				minetest.swap_node(pos_02, {name="hades_dryplants:reedmace_height_3"})
 			end
 		end
 	end
@@ -80,7 +80,7 @@ end
 -----------------------------------------------------------------------------------------------
 -- REEDMACE SPIKES
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reedmace_spikes", {
+minetest.register_node("hades_dryplants:reedmace_spikes", {
 	description = S("Reedmace"),
 	drawtype = "plantlike",
 	paramtype = "light",
@@ -92,8 +92,8 @@ minetest.register_node("dryplants:reedmace_spikes", {
 		flammable=2,
 		not_in_creative_inventory=1
 	},
-	drop = 'dryplants:reedmace_sapling',
-	sounds = default.node_sound_leaves_defaults(),
+	drop = 'hades_dryplants:reedmace_sapling',
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
@@ -102,7 +102,7 @@ minetest.register_node("dryplants:reedmace_spikes", {
 -----------------------------------------------------------------------------------------------
 -- REEDMACE height: 1
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reedmace_top", {
+minetest.register_node("hades_dryplants:reedmace_top", {
 	description = S("Reedmace, height: 1"),
 	drawtype = "plantlike",
 	paramtype = "light",
@@ -114,8 +114,8 @@ minetest.register_node("dryplants:reedmace_top", {
 		flammable=2,
 		not_in_creative_inventory=1
 	},
-	drop = 'dryplants:reedmace_sapling',
-	sounds = default.node_sound_leaves_defaults(),
+	drop = 'hades_dryplants:reedmace_sapling',
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
@@ -124,7 +124,7 @@ minetest.register_node("dryplants:reedmace_top", {
 -----------------------------------------------------------------------------------------------
 -- REEDMACE height: 2
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reedmace_height_2", {
+minetest.register_node("hades_dryplants:reedmace_height_2", {
 	description = S("Reedmace, height: 2"),
 	drawtype = "plantlike",
 	visual_scale = math.sqrt(8),
@@ -137,8 +137,8 @@ minetest.register_node("dryplants:reedmace_height_2", {
 		flammable=2--,
 		--not_in_creative_inventory=1
 	},
-	drop = 'dryplants:reedmace_sapling',
-	sounds = default.node_sound_leaves_defaults(),
+	drop = 'hades_dryplants:reedmace_sapling',
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
@@ -147,7 +147,7 @@ minetest.register_node("dryplants:reedmace_height_2", {
 -----------------------------------------------------------------------------------------------
 -- REEDMACE height: 3
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reedmace_height_3", {
+minetest.register_node("hades_dryplants:reedmace_height_3", {
 	description = S("Reedmace, height: 3"),
 	drawtype = "plantlike",
 	visual_scale = math.sqrt(8),
@@ -160,8 +160,8 @@ minetest.register_node("dryplants:reedmace_height_3", {
 		flammable=2--,
 		--not_in_creative_inventory=1
 	},
-	drop = 'dryplants:reedmace_sapling',
-	sounds = default.node_sound_leaves_defaults(),
+	drop = 'hades_dryplants:reedmace_sapling',
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
@@ -170,7 +170,7 @@ minetest.register_node("dryplants:reedmace_height_3", {
 -----------------------------------------------------------------------------------------------
 -- REEDMACE height: 3 & Spikes
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reedmace_height_3_spikes", {
+minetest.register_node("hades_dryplants:reedmace_height_3_spikes", {
 	description = S("Reedmace, height: 3 & Spikes"),
 	drawtype = "plantlike",
 	visual_scale = math.sqrt(8),
@@ -183,8 +183,8 @@ minetest.register_node("dryplants:reedmace_height_3_spikes", {
 		flammable=2--,
 		--not_in_creative_inventory=1
 	},
-	drop = 'dryplants:reedmace_sapling',
-	sounds = default.node_sound_leaves_defaults(),
+	drop = 'hades_dryplants:reedmace_sapling',
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
@@ -193,7 +193,7 @@ minetest.register_node("dryplants:reedmace_height_3_spikes", {
 -----------------------------------------------------------------------------------------------
 -- REEDMACE STEMS
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reedmace", {
+minetest.register_node("hades_dryplants:reedmace", {
 	description = S("Reedmace"),
 	drawtype = "plantlike",
 	paramtype = "light",
@@ -205,25 +205,25 @@ minetest.register_node("dryplants:reedmace", {
 		flammable=2,
 		not_in_creative_inventory=1
 	},
-	drop = 'dryplants:reedmace_sapling',
-	sounds = default.node_sound_leaves_defaults(),
+	drop = 'hades_dryplants:reedmace_sapling',
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
 	},
 	after_destruct = function(pos,oldnode)
         local node = minetest.get_node({x=pos.x,y=pos.y+1,z=pos.z})
-        if node.name == "dryplants:reedmace_top"
-		or node.name == "dryplants:reedmace_spikes" then
+        if node.name == "hades_dryplants:reedmace_top"
+		or node.name == "hades_dryplants:reedmace_spikes" then
             minetest.dig_node({x=pos.x,y=pos.y+1,z=pos.z})
-            minetest.add_item(pos,"dryplants:reedmace_sapling")
+            minetest.add_item(pos,"hades_dryplants:reedmace_sapling")
         end
     end,
 })
 -----------------------------------------------------------------------------------------------
 -- REEDMACE BOTTOM
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reedmace_bottom", {
+minetest.register_node("hades_dryplants:reedmace_bottom", {
 	description = S("Reedmace"),
 	drawtype = "plantlike",
 	paramtype = "light",
@@ -235,26 +235,26 @@ minetest.register_node("dryplants:reedmace_bottom", {
 		flammable=2,
 		not_in_creative_inventory=1
 	},
-	drop = 'dryplants:reedmace_sapling',
-	sounds = default.node_sound_leaves_defaults(),
+	drop = 'hades_dryplants:reedmace_sapling',
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
 	},
 	after_destruct = function(pos,oldnode)
         local node = minetest.get_node({x=pos.x,y=pos.y+1,z=pos.z})
-        if node.name == "dryplants:reedmace"
-		or node.name == "dryplants:reedmace_top"
-		or node.name == "dryplants:reedmace_spikes" then
+        if node.name == "hades_dryplants:reedmace"
+		or node.name == "hades_dryplants:reedmace_top"
+		or node.name == "hades_dryplants:reedmace_spikes" then
             minetest.dig_node({x=pos.x,y=pos.y+1,z=pos.z})
-            minetest.add_item(pos,"dryplants:reedmace_sapling")
+            minetest.add_item(pos,"hades_dryplants:reedmace_sapling")
         end
     end,
 })
 -----------------------------------------------------------------------------------------------
 -- REEDMACE "SAPLING" (the drop from the above)
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reedmace_sapling", {
+minetest.register_node("hades_dryplants:reedmace_sapling", {
 	description = S("Reedmace"),
 	drawtype = "plantlike",
 	paramtype = "light",
@@ -267,7 +267,7 @@ minetest.register_node("dryplants:reedmace_sapling", {
 		attached_node=1,
 		sapling=1,
 	},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	selection_box = {
 		type = "fixed",
 		fixed = {-0.3, -0.5, -0.3, 0.3, 0.5, 0.3}
@@ -275,7 +275,7 @@ minetest.register_node("dryplants:reedmace_sapling", {
 })
 -- abm
 minetest.register_abm({
-	nodenames = "dryplants:reedmace_sapling",
+	nodenames = "hades_dryplants:reedmace_sapling",
 	interval = REEDMACE_GROWING_TIME,
 	chance = 100/REEDMACE_GROWING_CHANCE,
 	action = function(pos, node, _, _)
@@ -295,7 +295,7 @@ minetest.register_abm({
 -----------------------------------------------------------------------------------------------
 -- REEDMACE WATER (for entity)
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reedmace_water", {
+minetest.register_node("hades_dryplants:reedmace_water", {
 	description = S("Reedmace"),
 	drawtype = "plantlike",
 	paramtype = "light",
@@ -310,7 +310,7 @@ minetest.register_node("dryplants:reedmace_water", {
 -----------------------------------------------------------------------------------------------
 -- REEDMACE WATER ENTITY
 -----------------------------------------------------------------------------------------------
-minetest.register_entity("dryplants:reedmace_water_entity",{
+minetest.register_entity("hades_dryplants:reedmace_water_entity",{
 	visual = "mesh",
 	mesh = "plantlike.obj",
 	visual_size = {x=10, y=10},
@@ -319,7 +319,7 @@ minetest.register_entity("dryplants:reedmace_water_entity",{
 	on_punch = function(self, puncher)
 		if puncher:is_player() and puncher:get_inventory() then
 			if not minetest.setting_getbool("creative_mode") then
-				puncher:get_inventory():add_item("main", "dryplants:reedmace_sapling")
+				puncher:get_inventory():add_item("main", "hades_dryplants:reedmace_sapling")
 			end
 			self.object:remove()
 		end
@@ -330,13 +330,13 @@ minetest.register_entity("dryplants:reedmace_water_entity",{
 -----------------------------------------------------------------------------------------------
 --[[biome_lib.register_active_spawner({
 	spawn_delay = 1200,
-	spawn_plants = {"dryplants:reedmace_sapling"},
+	spawn_plants = {"hades_dryplants:reedmace_sapling"},
 	spawn_chance = 400,
 	spawn_surfaces = {
 		"default:dirt_with_grass",
 		"default:desert_sand",
 		"default:sand",
-		"dryplants:grass_short",
+		"hades_dryplants:grass_short",
 		"stoneage:grass_with_silex"
 	},
 	seed_diff = 329,

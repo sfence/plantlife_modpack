@@ -26,10 +26,11 @@ bushes_classic.bushes_descriptions = {
 
 bushes_classic.spawn_list = {}
 
-local modpath = minetest.get_modpath('bushes_classic')
+local modpath = minetest.get_modpath(minetest.get_current_modname())
 dofile(modpath..'/cooking.lua')
 dofile(modpath..'/nodes.lua')
 
+--[[
 biome_lib.register_active_spawner({
 	spawn_delay = 3600,
 	spawn_plants = bushes_classic.spawn_list,
@@ -52,7 +53,8 @@ biome_lib.register_active_spawner({
 	humidity_min = 0, -- 50% RH
 	humidity_max = -1, -- 100% RH
 })
+--]]
 
-minetest.register_alias("bushes:basket_pies", "bushes:basket_strawberry")
+--minetest.register_alias("bushes:basket_pies", "bushes:basket_strawberry")
 
 print("[Bushes] Loaded.")

@@ -7,43 +7,43 @@ local S = minetest.get_translator("ferns")
 -----------------------------------------------------------------------------------------------
 
 local fern1 = minetest.registered_items["default:fern_1"] or false
-fern1 = (fern1 and fern1.name) or "ferns:fern_01"
+fern1 = (fern1 and fern1.name) or "hades_ferns:fern_01"
 
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "ferns:fiddlehead 3",
-	recipe = {"ferns:fern_01"},
+	output = "hades_ferns:fiddlehead 3",
+	recipe = {"hades_ferns:fern_01"},
 	replacements = {
-		{fern1, "ferns:ferntuber"}
+		{fern1, "hades_ferns:ferntuber"}
 	},
 })
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "ferns:fiddlehead 3",
-	recipe = {"ferns:tree_fern_leaves"},
+	output = "hades_ferns:fiddlehead 3",
+	recipe = {"hades_ferns:tree_fern_leaves"},
 	replacements = {
-		{"ferns:tree_fern_leaves", "ferns:sapling_tree_fern"}
+		{"hades_ferns:tree_fern_leaves", "hades_ferns:sapling_tree_fern"}
 	},
 })
 -----------------------------------------------------------------------------------------------
 -- FIDDLEHEAD
 -----------------------------------------------------------------------------------------------
-minetest.register_alias("archaeplantae:fiddlehead",      "ferns:fiddlehead")
+minetest.register_alias("archaeplantae:fiddlehead",      "hades_ferns:fiddlehead")
 
-minetest.register_craftitem("ferns:fiddlehead", {
+minetest.register_craftitem("hades_ferns:fiddlehead", {
 	description = S("Fiddlehead"),
 	inventory_image = "ferns_fiddlehead.png",
 	on_use = minetest.item_eat(-1), -- slightly poisonous when raw
 })
 minetest.register_craft({
 	type = "cooking",
-	output = "ferns:fiddlehead_roasted",
-	recipe = "ferns:fiddlehead",
+	output = "hades_ferns:fiddlehead_roasted",
+	recipe = "hades_ferns:fiddlehead",
 	cooktime = 1,
 })
-minetest.register_craftitem("ferns:fiddlehead_roasted", {
+minetest.register_craftitem("hades_ferns:fiddlehead_roasted", {
 	description = S("Roasted Fiddlehead"),
 	inventory_image = "ferns_fiddlehead_roasted.png",
 	on_use = minetest.item_eat(1), -- edible when cooked
@@ -51,22 +51,22 @@ minetest.register_craftitem("ferns:fiddlehead_roasted", {
 -----------------------------------------------------------------------------------------------
 -- FERN TUBER
 -----------------------------------------------------------------------------------------------
-minetest.register_alias("archaeplantae:ferntuber",      "ferns:ferntuber")
+minetest.register_alias("archaeplantae:ferntuber",      "hades_ferns:ferntuber")
 
-minetest.register_craftitem("ferns:ferntuber", {
+minetest.register_craftitem("hades_ferns:ferntuber", {
 	description = S("Fern Tuber"),
 	inventory_image = "ferns_ferntuber.png",
 })
 minetest.register_craft({
 	type = "cooking",
-	output = "ferns:ferntuber_roasted",
-	recipe = "ferns:ferntuber",
+	output = "hades_ferns:ferntuber_roasted",
+	recipe = "hades_ferns:ferntuber",
 	cooktime = 3,
 })
 
-minetest.register_alias("archaeplantae:ferntuber_roasted",      "ferns:ferntuber_roasted")
+minetest.register_alias("archaeplantae:ferntuber_roasted",      "hades_ferns:ferntuber_roasted")
 
-minetest.register_craftitem("ferns:ferntuber_roasted", {
+minetest.register_craftitem("hades_ferns:ferntuber_roasted", {
 	description = S("Roasted Fern Tuber"),
 	inventory_image = "ferns_ferntuber_roasted.png",
 	on_use = minetest.item_eat(3),

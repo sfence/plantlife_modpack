@@ -147,7 +147,7 @@ minetest.register_abm({
 
 for i, bush_name in ipairs(bushes_classic.bushes) do
 
-	minetest.register_node(":bushes:basket_"..bush_name, {
+	minetest.register_node(":hades_extrabushes:basket_"..bush_name, {
 		description = bushes_classic.bushes_descriptions[i][5],
 		drawtype = "mesh",
 		mesh = "bushes_basket_full.obj",
@@ -174,7 +174,7 @@ for i, bush_name in ipairs(bushes_classic.bushes) do
 		texture_bottom = "bushes_bush_bottom.png"
 	end
 
-	minetest.register_node(":bushes:" .. bush_name .. "_bush", {
+	minetest.register_node(":hades_extrabushes:" .. bush_name .. "_bush", {
 		description = bushes_classic.bushes_descriptions[i][6],
 		drawtype = "mesh",
 		mesh = "bushes_bush.obj",
@@ -183,7 +183,7 @@ for i, bush_name in ipairs(bushes_classic.bushes) do
 		sunlight_propagates = true,
 		walkable = false,
 		groups = groups,
-		sounds = default.node_sound_leaves_defaults(),
+		sounds = hades_sounds.node_sound_leaves_defaults(),
 		drop = "",
 		after_dig_node = function( pos, oldnode, oldmetadata, digger )
 			return plantlife_bushes.after_dig_node(pos, oldnode, oldmetadata, digger);
@@ -199,7 +199,7 @@ for i, bush_name in ipairs(bushes_classic.bushes) do
 	end
 end
 
-minetest.register_node(":bushes:basket_empty", {
+minetest.register_node(":hades_extrabushes:basket_empty", {
     description = S("Basket"),
 	drawtype = "mesh",
 	mesh = "bushes_basket_empty.obj",

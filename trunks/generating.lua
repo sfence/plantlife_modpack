@@ -27,7 +27,7 @@ abstract_trunks.place_twig = function(pos)
 
 --	small twigs
 	if twig_size <= 16 then
-		minetest.swap_node(right_here, {name="trunks:twig_"..math.random(1,4), param2=math.random(0,3)})
+		minetest.swap_node(right_here, {name="hades_trunks:twig_"..math.random(1,4), param2=math.random(0,3)})
 	end
 --	big twigs
 	if Big_Twigs == true then
@@ -37,13 +37,13 @@ abstract_trunks.place_twig = function(pos)
 			or check_node_buildable_to({x=pos.x+1,y=pos.y,z=pos.z})) then
 
 			if check_node_buildable_to(right_here) then
-				minetest.swap_node(right_here, {name="trunks:twig_5"})
+				minetest.swap_node(right_here, {name="hades_trunks:twig_5"})
 			end
 			if check_node_buildable_to(north_east) then
-				minetest.swap_node(north_east, {name="trunks:twig_7"})
+				minetest.swap_node(north_east, {name="hades_trunks:twig_7"})
 			end
 			if check_node_buildable_to(east) then
-				minetest.swap_node(east,		  {name="trunks:twig_8"})
+				minetest.swap_node(east,		  {name="hades_trunks:twig_8"})
 			end
 		end
 	elseif twig_size == 18 then
@@ -51,13 +51,13 @@ abstract_trunks.place_twig = function(pos)
 			or check_node_buildable_to({x=pos.x,y=pos.y,z=pos.z-1})) then
 
 			if check_node_buildable_to(right_here) then
-				minetest.swap_node(right_here, {name="trunks:twig_5", param2=1})
+				minetest.swap_node(right_here, {name="hades_trunks:twig_5", param2=1})
 			end
 			if check_node_buildable_to(south_east) then
-				minetest.swap_node(south_east, {name="trunks:twig_7", param2=1})
+				minetest.swap_node(south_east, {name="hades_trunks:twig_7", param2=1})
 			end
 			if check_node_buildable_to(south) then
-				minetest.swap_node(south,	  {name="trunks:twig_8", param2=1})
+				minetest.swap_node(south,	  {name="hades_trunks:twig_8", param2=1})
 			end
 		end
 	elseif twig_size == 19 then
@@ -65,13 +65,13 @@ abstract_trunks.place_twig = function(pos)
 			or check_node_buildable_to({x=pos.x-1,y=pos.y,z=pos.z})) then
 
 			if check_node_buildable_to(right_here) then
-				minetest.swap_node(right_here, {name="trunks:twig_5", param2=2})
+				minetest.swap_node(right_here, {name="hades_trunks:twig_5", param2=2})
 			end
 			if check_node_buildable_to(south_west) then
-				minetest.swap_node(south_west, {name="trunks:twig_7", param2=2})
+				minetest.swap_node(south_west, {name="hades_trunks:twig_7", param2=2})
 			end
 			if check_node_buildable_to(west) then
-				minetest.swap_node(west,		  {name="trunks:twig_8", param2=2})
+				minetest.swap_node(west,		  {name="hades_trunks:twig_8", param2=2})
 			end
 		end
 	elseif twig_size == 20 then
@@ -79,13 +79,13 @@ abstract_trunks.place_twig = function(pos)
 			or check_node_buildable_to({x=pos.x,y=pos.y,z=pos.z+1})) then
 
 			if check_node_buildable_to(right_here) then
-				minetest.swap_node(right_here, {name="trunks:twig_5", param2=3})
+				minetest.swap_node(right_here, {name="hades_trunks:twig_5", param2=3})
 			end
 			if check_node_buildable_to(north_west) then
-				minetest.swap_node(north_west, {name="trunks:twig_7", param2=3})
+				minetest.swap_node(north_west, {name="hades_trunks:twig_7", param2=3})
 			end
 			if check_node_buildable_to(north) then
-				minetest.swap_node(north,	  {name="trunks:twig_8", param2=3})
+				minetest.swap_node(north,	  {name="hades_trunks:twig_8", param2=3})
 			end
 		end
 --	big twig 2
@@ -94,13 +94,13 @@ abstract_trunks.place_twig = function(pos)
 			or check_node_buildable_to({x=pos.x+1,y=pos.y,z=pos.z+1})) then
 
 			if check_node_buildable_to(right_here) then
-				minetest.swap_node(right_here, {name="trunks:twig_9"})
+				minetest.swap_node(right_here, {name="hades_trunks:twig_9"})
 			end
 			if check_node_buildable_to(north) then
-				minetest.swap_node(north,	  {name="trunks:twig_10"})
+				minetest.swap_node(north,	  {name="hades_trunks:twig_10"})
 			end
 			if check_node_buildable_to(north_east) then
-				minetest.swap_node(north_east, {name="trunks:twig_11"})
+				minetest.swap_node(north_east, {name="hades_trunks:twig_11"})
 			end
 		end
 	elseif twig_size == 22 then
@@ -108,13 +108,13 @@ abstract_trunks.place_twig = function(pos)
 			or check_node_buildable_to({x=pos.x+1,y=pos.y,z=pos.z-1})) then
 
 			if check_node_buildable_to(right_here) then
-				minetest.swap_node(right_here, {name="trunks:twig_9", param2=1})
+				minetest.swap_node(right_here, {name="hades_trunks:twig_9", param2=1})
 			end
 			if check_node_buildable_to(east) then
-				minetest.swap_node(east,		  {name="trunks:twig_10", param2=1})
+				minetest.swap_node(east,		  {name="hades_trunks:twig_10", param2=1})
 			end
 			if check_node_buildable_to(south_east) then
-				minetest.swap_node(south_east, {name="trunks:twig_11", param2=1})
+				minetest.swap_node(south_east, {name="hades_trunks:twig_11", param2=1})
 			end
 		end
 	elseif twig_size == 23 then
@@ -122,13 +122,13 @@ abstract_trunks.place_twig = function(pos)
 			or check_node_buildable_to({x=pos.x-1,y=pos.y,z=pos.z-1})) then
 
 			if check_node_buildable_to(right_here) then
-				minetest.swap_node(right_here, {name="trunks:twig_9", param2=2})
+				minetest.swap_node(right_here, {name="hades_trunks:twig_9", param2=2})
 			end
 			if check_node_buildable_to(south) then
-				minetest.swap_node(south,	  {name="trunks:twig_10", param2=2})
+				minetest.swap_node(south,	  {name="hades_trunks:twig_10", param2=2})
 			end
 			if check_node_buildable_to(south_west) then
-				minetest.swap_node(south_west, {name="trunks:twig_11", param2=2})
+				minetest.swap_node(south_west, {name="hades_trunks:twig_11", param2=2})
 			end
 		end
 	elseif twig_size == 24 then
@@ -136,17 +136,17 @@ abstract_trunks.place_twig = function(pos)
 			or check_node_buildable_to({x=pos.x-1,y=pos.y,z=pos.z+1})) then
 
 			if check_node_buildable_to(right_here) then
-				minetest.swap_node(right_here, {name="trunks:twig_9", param2=3})
+				minetest.swap_node(right_here, {name="hades_trunks:twig_9", param2=3})
 			end
 			if check_node_buildable_to(west) then
-				minetest.swap_node(west,		  {name="trunks:twig_10", param2=3})
+				minetest.swap_node(west,		  {name="hades_trunks:twig_10", param2=3})
 			end
 			if check_node_buildable_to(north_west) then
-				minetest.swap_node(north_west, {name="trunks:twig_11", param2=3})
+				minetest.swap_node(north_west, {name="hades_trunks:twig_11", param2=3})
 			end
 		end
 	elseif twig_size <= 25 then
-		minetest.swap_node(right_here, {name="trunks:twig_"..math.random(12,13), param2=math.random(0,3)})
+		minetest.swap_node(right_here, {name="hades_trunks:twig_"..math.random(12,13), param2=math.random(0,3)})
 	end
 	end
 end
@@ -349,9 +349,9 @@ abstract_trunks.grow_moss_on_ground = function(pos)
 	local rot = math.random(0,3)
 
 	if moss_type == 1 then
-		minetest.swap_node(on_ground, {name="trunks:moss_with_fungus_"..rot, param2=1})
+		minetest.swap_node(on_ground, {name="hades_trunks:moss_with_fungus_"..rot, param2=1})
 	else
-		minetest.swap_node(on_ground, {name="trunks:moss_plain_"..rot, param2=1})
+		minetest.swap_node(on_ground, {name="hades_trunks:moss_plain_"..rot, param2=1})
 	end
 
 end
@@ -393,45 +393,45 @@ abstract_trunks.grow_moss_on_trunk = function(pos)
 			local moss_type = math.random(1,41)
 			local rot = math.random(0,3)
 			if moss_type == 1 then
-				minetest.swap_node(on_ground, {name="trunks:moss_with_fungus_"..rot, param2=1})
+				minetest.swap_node(on_ground, {name="hades_trunks:moss_with_fungus_"..rot, param2=1})
 			elseif moss_type < 22 then
-				minetest.swap_node(on_ground, {name="trunks:moss_plain_"..rot, param2=1})
+				minetest.swap_node(on_ground, {name="hades_trunks:moss_plain_"..rot, param2=1})
 			end
 		end
 		if check_node_buildable_to(at_side_n) then
 			local moss_type = math.random(1,31) -- cliche of more moss at north
 			local rot = math.random(0,3)
 			if moss_type == 1 then
-				minetest.swap_node(at_side_n, {name="trunks:moss_with_fungus_"..rot, param2=5})
+				minetest.swap_node(at_side_n, {name="hades_trunks:moss_with_fungus_"..rot, param2=5})
 			elseif moss_type < 22 then
-				minetest.swap_node(at_side_n, {name="trunks:moss_plain_"..rot, param2=5})
+				minetest.swap_node(at_side_n, {name="hades_trunks:moss_plain_"..rot, param2=5})
 			end
 		end
 		if check_node_buildable_to(at_side_e) then
 			local moss_type = math.random(1,41)
 			local rot = math.random(0,3)
 			if moss_type == 1 then
-				minetest.swap_node(at_side_e, {name="trunks:moss_with_fungus_"..rot, param2=3})
+				minetest.swap_node(at_side_e, {name="hades_trunks:moss_with_fungus_"..rot, param2=3})
 			elseif moss_type < 22 then
-				minetest.swap_node(at_side_e, {name="trunks:moss_plain_"..rot, param2=3})
+				minetest.swap_node(at_side_e, {name="hades_trunks:moss_plain_"..rot, param2=3})
 			end
 		end
 		if check_node_buildable_to(at_side_s) then
 			local moss_type = math.random(1,41)
 			local rot = math.random(0,3)
 			if moss_type == 1 then
-				minetest.swap_node(at_side_s, {name="trunks:moss_with_fungus_"..rot, param2=4})
+				minetest.swap_node(at_side_s, {name="hades_trunks:moss_with_fungus_"..rot, param2=4})
 			elseif moss_type < 22 then
-				minetest.swap_node(at_side_s, {name="trunks:moss_plain_"..rot, param2=4})
+				minetest.swap_node(at_side_s, {name="hades_trunks:moss_plain_"..rot, param2=4})
 			end
 		end
 		if check_node_buildable_to(at_side_w) then
 			local moss_type = math.random(1,41)
 			local rot = math.random(0,3)
 			if moss_type == 1 then
-				minetest.swap_node(at_side_w, {name="trunks:moss_with_fungus_"..rot, param2=2})
+				minetest.swap_node(at_side_w, {name="hades_trunks:moss_with_fungus_"..rot, param2=2})
 			elseif moss_type < 22 then
-				minetest.swap_node(at_side_w, {name="trunks:moss_plain_"..rot, param2=2})
+				minetest.swap_node(at_side_w, {name="hades_trunks:moss_plain_"..rot, param2=2})
 			end
 		end
 	--end
@@ -495,16 +495,16 @@ abstract_trunks.grow_roots = function(pos)
 		and string.find(node_below.name, "dirt")
 		and node_here.param2 == 0 then
 			if check_node_buildable_to(north) then
-				minetest.swap_node(north, {name="trunks:"..TRuNK.."root", param2=2})
+				minetest.swap_node(north, {name="hades_trunks:"..TRuNK.."root", param2=2})
 			end
 			if check_node_buildable_to(east) then
-				minetest.swap_node(east, {name="trunks:"..TRuNK.."root", param2=3})
+				minetest.swap_node(east, {name="hades_trunks:"..TRuNK.."root", param2=3})
 			end
 			if check_node_buildable_to(south) then
-				minetest.swap_node(south, {name="trunks:"..TRuNK.."root", param2=0})
+				minetest.swap_node(south, {name="hades_trunks:"..TRuNK.."root", param2=0})
 			end
 			if check_node_buildable_to(west) then
-				minetest.swap_node(west, {name="trunks:"..TRuNK.."root", param2=1})
+				minetest.swap_node(west, {name="hades_trunks:"..TRuNK.."root", param2=1})
 			end
 		end
 	end

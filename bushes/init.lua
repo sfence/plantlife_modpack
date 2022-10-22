@@ -19,7 +19,7 @@ local bushes_youngtrees_rarity_fertility = tonumber(minetest.settings:get("bushe
 local bushes_youngtrees_fertility = tonumber(minetest.settings:get("bushes_youngtrees_fertility")) or -0.5
 
 
-minetest.register_node("bushes:youngtree2_bottom", {
+minetest.register_node("hades_extrabushes:youngtree2_bottom", {
 	description = S("Young Tree 2 (bottom)"),
 	drawtype="nodebox",
 	tiles = {"bushes_youngtree2trunk.png"},
@@ -36,7 +36,7 @@ minetest.register_node("bushes:youngtree2_bottom", {
 		}
 	},
 	groups = {snappy=3,flammable=2,attached_node=1},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 	drop = 'default:stick'
 })
 
@@ -44,7 +44,7 @@ local BushBranchCenter			= { {1,1}, {3,2} }
 for i in pairs(BushBranchCenter) do
 	local Num		= BushBranchCenter[i][1]
 	local TexNum	= BushBranchCenter[i][2]
-	minetest.register_node("bushes:bushbranches"..Num, {
+	minetest.register_node("hades_extrabushes:bushbranches"..Num, {
 		description = S("Bush Branches @1", Num),
 		drawtype = "nodebox",
 		tiles = {
@@ -73,7 +73,7 @@ for i in pairs(BushBranchCenter) do
 			leaves=1,
 			attached_node=1
 		},
-		sounds = default.node_sound_leaves_defaults(),
+		sounds = hades_sounds.node_sound_leaves_defaults(),
 		drop = 'default:stick 4'
 	})
 end
@@ -82,7 +82,7 @@ local BushBranchSide			= { {2,1}, {4,2} }
 for i in pairs(BushBranchSide) do
 	local Num		= BushBranchSide[i][1]
 	local TexNum	= BushBranchSide[i][2]
-	minetest.register_node("bushes:bushbranches"..Num, {
+	minetest.register_node("hades_extrabushes:bushbranches"..Num, {
 		description = S("Bush Branches @1", Num),
 		drawtype = "nodebox",
 		tiles = {
@@ -117,7 +117,7 @@ for i in pairs(BushBranchSide) do
 			leaves=1,
 			attached_node=1
 		},
-		sounds = default.node_sound_leaves_defaults(),
+		sounds = hades_sounds.node_sound_leaves_defaults(),
 		drop = 'default:stick 3'
 	})
 end
@@ -125,7 +125,7 @@ end
 local BushLeafNode			= { {1}, {2}}
 for i in pairs(BushLeafNode) do
 	local Num = BushLeafNode[i][1]
-	minetest.register_node("bushes:BushLeaves"..Num, {
+	minetest.register_node("hades_extrabushes:BushLeaves"..Num, {
 		description = S("Bush Leaves @1", Num),
 		drawtype = "allfaces_optional",
 		tiles = {"bushes_leaves_"..Num..".png"},
@@ -135,7 +135,7 @@ for i in pairs(BushLeafNode) do
 			flammable=2,
 			attached_node=1
 		},
-		sounds = default.node_sound_leaves_defaults(),
+		sounds = hades_sounds.node_sound_leaves_defaults(),
 	})
 end
 
@@ -194,19 +194,19 @@ abstract_bushes.grow_bush_node = function(pos,dir, leaf_type)
 
 	if minetest.get_node(right_here).name == "air"	-- instead of check_air = true,
 	or minetest.get_node(right_here).name == "default:junglegrass" then
-		minetest.swap_node(right_here, {name="bushes:bushbranches"..bush_branch_type , param2=dir})
+		minetest.swap_node(right_here, {name="hades_extrabushes:bushbranches"..bush_branch_type , param2=dir})
 						--minetest.chat_send_all("leaf_type: (" .. leaf_type .. ")")
-		minetest.swap_node(above_right_here, {name="bushes:BushLeaves"..leaf_type})
+		minetest.swap_node(above_right_here, {name="hades_extrabushes:BushLeaves"..leaf_type})
 		local chance_of_high_leaves = math.random(1,10)
 		if chance_of_high_leaves> 5 then
 			local two_above_right_here = {x=pos.x, y=pos.y+3, z=pos.z}
 							--minetest.chat_send_all("leaf_type: (" .. leaf_type .. ")")
-			minetest.swap_node(two_above_right_here, {name="bushes:BushLeaves"..leaf_type})
+			minetest.swap_node(two_above_right_here, {name="hades_extrabushes:BushLeaves"..leaf_type})
 		end
 	end
 end
 
-
+--[[
 biome_lib.register_on_generate({
 		surface = {
 			"default:dirt_with_grass",
@@ -221,6 +221,7 @@ biome_lib.register_on_generate({
 	},
 	abstract_bushes.grow_bush
 )
+--]]
 
 abstract_bushes.grow_youngtree2 = function(pos)
 	local height = math.random(4,5)
@@ -239,17 +240,17 @@ abstract_bushes.grow_youngtree_node2 = function(pos, height)
 		if height == 4 then
 			local two_above_right_here_south = {x=pos.x, y=pos.y+3, z=pos.z-1}
 			local three_above_right_here_south = {x=pos.x, y=pos.y+4, z=pos.z-1}
-			minetest.swap_node(right_here, {name="bushes:youngtree2_bottom"})
-			minetest.swap_node(above_right_here, {name="bushes:youngtree2_bottom"})
-			minetest.swap_node(two_above_right_here, {name="bushes:bushbranches2"	, param2=2})
-			minetest.swap_node(two_above_right_here_south, {name="bushes:bushbranches2"	, param2=0})
-			minetest.swap_node(three_above_right_here, {name="bushes:BushLeaves1" })
-			minetest.swap_node(three_above_right_here_south, {name="bushes:BushLeaves1" })
+			minetest.swap_node(right_here, {name="hades_extrabushes:youngtree2_bottom"})
+			minetest.swap_node(above_right_here, {name="hades_extrabushes:youngtree2_bottom"})
+			minetest.swap_node(two_above_right_here, {name="hades_extrabushes:bushbranches2"	, param2=2})
+			minetest.swap_node(two_above_right_here_south, {name="hades_extrabushes:bushbranches2"	, param2=0})
+			minetest.swap_node(three_above_right_here, {name="hades_extrabushes:BushLeaves1" })
+			minetest.swap_node(three_above_right_here_south, {name="hades_extrabushes:BushLeaves1" })
 		end
 	end
 end
 
-
+--[[
 biome_lib.register_on_generate({
 		surface = {
 			"default:dirt_with_grass",
@@ -264,3 +265,4 @@ biome_lib.register_on_generate({
 	},
 	abstract_bushes.grow_youngtree2
 )
+--]]

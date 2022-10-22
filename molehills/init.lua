@@ -20,7 +20,7 @@ local mh_cbox = {
 	fixed = { -0.5, -0.5, -0.5, 0.5, -0.125, 0.5}
 }
 
-minetest.register_node("molehills:molehill",{
+minetest.register_node("hades_molehills:molehill",{
 	drawtype = "mesh",
 	mesh = "molehill_molehill.obj",
 	description = S("Mole Hill"),
@@ -30,7 +30,7 @@ minetest.register_node("molehills:molehill",{
 	selection_box = mh_cbox,
 	collision_box = mh_cbox,
 	groups = {crumbly=3},
-	sounds = default.node_sound_dirt_defaults(),
+	sounds = hades_sounds.node_sound_dirt_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
@@ -39,8 +39,8 @@ minetest.register_node("molehills:molehill",{
 minetest.register_craft({ -- molehills --> dirt
 	output = "default:dirt",
 	recipe = {
-		{"molehills:molehill","molehills:molehill"},
-		{"molehills:molehill","molehills:molehill"},
+		{"hades_molehills:molehill","hades_molehills:molehill"},
+		{"hades_molehills:molehill","hades_molehills:molehill"},
 	}
 })
 
@@ -57,10 +57,11 @@ abstract_molehills.place_molehill = function(pos)
 	and minetest.get_node({x=pos.x+1, y=pos.y, z=pos.z-1}).name ~= "air"
 	and minetest.get_node({x=pos.x-1, y=pos.y, z=pos.z+1}).name ~= "air"
 	and minetest.get_node({x=pos.x-1, y=pos.y, z=pos.z-1}).name ~= "air" then
-		minetest.swap_node(right_here, {name="molehills:molehill"})
+		minetest.swap_node(right_here, {name="hades_molehills:molehill"})
 	end
 end
 
+--[[
 biome_lib.register_on_generate({
 		surface = {"default:dirt_with_grass"},
 		rarity = molehills_rarity,
@@ -68,8 +69,9 @@ biome_lib.register_on_generate({
 		plantlife_limit = molehills_fertility,
 		min_elevation = 1,
 		max_elevation = 40,
-		avoid_nodes = {"group:tree","group:liquid","group:stone","group:falling_node"--[[,"air"]]},
+		avoid_nodes = {"group:tree","group:liquid","group:stone","group:falling_node"},
 		avoid_radius = 4,
 	},
 	abstract_molehills.place_molehill
 )
+--]]

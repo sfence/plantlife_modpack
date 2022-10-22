@@ -14,7 +14,7 @@ minetest.register_craft({
 -- Sugar
 
 if not minetest.registered_items["farming:sugar"] then
-	minetest.register_craftitem(":bushes:sugar", {
+	minetest.register_craftitem(":hades_extrabushes:sugar", {
 		description = S("Sugar"),
 		inventory_image = "bushes_sugar.png",
 		on_use = minetest.item_eat(1),
@@ -49,7 +49,7 @@ for i, berry in ipairs(bushes_classic.bushes) do
 		groups["food_" .. berry] = 1
 
 		-- Berry
-		minetest.register_craftitem(":bushes:"..berry, {
+		minetest.register_craftitem(":hades_extrabushes:"..berry, {
 			description = bushes_classic.bushes_descriptions[i][1],
 			inventory_image = "bushes_"..berry..".png",
 			groups = groups,
@@ -58,7 +58,7 @@ for i, berry in ipairs(bushes_classic.bushes) do
 	end
 
 	-- Raw pie
-	minetest.register_craftitem(":bushes:"..berry.."_pie_raw", {
+	minetest.register_craftitem(":hades_extrabushes:"..berry.."_pie_raw", {
 		description = bushes_classic.bushes_descriptions[i][2],
 		inventory_image = "bushes_"..berry.."_pie_raw.png",
 		on_use = minetest.item_eat(4),
@@ -85,7 +85,7 @@ for i, berry in ipairs(bushes_classic.bushes) do
 	end
 
 	-- Cooked pie
-	minetest.register_craftitem(":bushes:"..berry.."_pie_cooked", {
+	minetest.register_craftitem(":hades_extrabushes:"..berry.."_pie_cooked", {
 		description = bushes_classic.bushes_descriptions[i][3],
 		inventory_image = "bushes_"..berry.."_pie_cooked.png",
 		on_use = minetest.item_eat(6),
@@ -99,7 +99,7 @@ for i, berry in ipairs(bushes_classic.bushes) do
 	})
 
 	-- Slice of pie
-	minetest.register_craftitem(":bushes:"..berry.."_pie_slice", {
+	minetest.register_craftitem(":hades_extrabushes:"..berry.."_pie_slice", {
 		description = bushes_classic.bushes_descriptions[i][4],
 		inventory_image = "bushes_"..berry.."_pie_slice.png",
 		on_use = minetest.item_eat(1),

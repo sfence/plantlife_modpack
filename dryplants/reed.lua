@@ -8,28 +8,28 @@
 -- support for i18n
 local S = minetest.get_translator("dryplants")
 
-minetest.register_alias("stairs:stair_wetreed",				"dryplants:wetreed_roof")
-minetest.register_alias("stairs:slab_wetreed",				"dryplants:wetreed_slab")
-minetest.register_alias("stairs:stair_reed",				"dryplants:reed_roof")
-minetest.register_alias("stairs:slab_reed",					"dryplants:reed_slab")
+minetest.register_alias("stairs:stair_wetreed",				"hades_dryplants:wetreed_roof")
+minetest.register_alias("stairs:slab_wetreed",				"hades_dryplants:wetreed_slab")
+minetest.register_alias("stairs:stair_reed",				"hades_dryplants:reed_roof")
+minetest.register_alias("stairs:slab_reed",					"hades_dryplants:reed_slab")
 
 
 -----------------------------------------------------------------------------------------------
 -- Wet Reed
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:wetreed", {
+minetest.register_node("hades_dryplants:wetreed", {
 	description = S("Wet Reed"),
 	paramtype = "light",
 	paramtype2 = "facedir",
 	tiles = {"dryplants_reed_wet.png"},
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
 -- Wet Reed Slab
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:wetreed_slab", {
+minetest.register_node("hades_dryplants:wetreed_slab", {
 	description = S("Wet Reed Slab"),
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -44,13 +44,13 @@ minetest.register_node("dryplants:wetreed_slab", {
 		fixed = {-1/2, -1/2, -1/2, 1/2, 0, 1/2},
 	},
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
 -- Wet Reed Roof
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:wetreed_roof", {
+minetest.register_node("hades_dryplants:wetreed_roof", {
 	description = S("Wet Reed Roof"),
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -72,7 +72,7 @@ minetest.register_node("dryplants:wetreed_roof", {
 		}
 	},
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 if AUTO_ROOF_CORNER == true then
@@ -86,9 +86,9 @@ if AUTO_ROOF_CORNER == true then
 	for i in pairs(CoRNeR) do
 
 		local MaTeRiaL = CoRNeR[i][1]
-		local roof = "dryplants:"..MaTeRiaL.."_roof"
-		local corner = "dryplants:"..MaTeRiaL.."_roof_corner"
-		local corner_2 = "dryplants:"..MaTeRiaL.."_roof_corner_2"
+		local roof = "hades_dryplants:"..MaTeRiaL.."_roof"
+		local corner = "hades_dryplants:"..MaTeRiaL.."_roof_corner"
+		local corner_2 = "hades_dryplants:"..MaTeRiaL.."_roof_corner_2"
 
 		minetest.register_abm({
 			nodenames = {roof},
@@ -173,7 +173,7 @@ end
 -----------------------------------------------------------------------------------------------
 -- Wet Reed Roof Corner
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:wetreed_roof_corner", {
+minetest.register_node("hades_dryplants:wetreed_roof_corner", {
 	description = S("Wet Reed Roof Corner"),
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -197,13 +197,13 @@ minetest.register_node("dryplants:wetreed_roof_corner", {
 		}
 	},
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
 -- Wet Reed Roof Corner 2
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:wetreed_roof_corner_2", {
+minetest.register_node("hades_dryplants:wetreed_roof_corner_2", {
 	description = S("Wet Reed Roof Corner 2"),
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -227,7 +227,7 @@ minetest.register_node("dryplants:wetreed_roof_corner_2", {
 		}
 	},
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
@@ -237,11 +237,11 @@ if REED_WILL_DRY == true then
 
 	local DRyiNG = {
 --		  WeT									 DRy
-		{"dryplants:wetreed",					"dryplants:reed"},
-		{"dryplants:wetreed_slab",				"dryplants:reed_slab"},
-		{"dryplants:wetreed_roof",				"dryplants:reed_roof"},
-		{"dryplants:wetreed_roof_corner",		"dryplants:reed_roof_corner"},
-		{"dryplants:wetreed_roof_corner_2",		"dryplants:reed_roof_corner_2"}
+		{"hades_dryplants:wetreed",					"hades_dryplants:reed"},
+		{"hades_dryplants:wetreed_slab",				"hades_dryplants:reed_slab"},
+		{"hades_dryplants:wetreed_roof",				"hades_dryplants:reed_roof"},
+		{"hades_dryplants:wetreed_roof_corner",		"hades_dryplants:reed_roof_corner"},
+		{"hades_dryplants:wetreed_roof_corner_2",		"hades_dryplants:reed_roof_corner_2"}
 	}
 	for i in pairs(DRyiNG) do
 
@@ -263,19 +263,19 @@ end
 -----------------------------------------------------------------------------------------------
 -- Reed
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reed", {
+minetest.register_node("hades_dryplants:reed", {
 	description = S("Reed"),
 	paramtype = "light",
 	paramtype2 = "facedir",
 	tiles = {"dryplants_reed.png"},
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
 -- Reed Slab
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reed_slab", {
+minetest.register_node("hades_dryplants:reed_slab", {
 	description = S("Reed Slab"),
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -290,13 +290,13 @@ minetest.register_node("dryplants:reed_slab", {
 		fixed = {-1/2, -1/2, -1/2, 1/2, 0, 1/2},
 	},
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
 -- Reed Roof
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reed_roof", {
+minetest.register_node("hades_dryplants:reed_roof", {
 	description = S("Reed Roof"),
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -318,13 +318,13 @@ minetest.register_node("dryplants:reed_roof", {
 		}
 	},
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
 -- Reed Roof Corner
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reed_roof_corner", {
+minetest.register_node("hades_dryplants:reed_roof_corner", {
 	description = S("Reed Roof Corner"),
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -348,13 +348,13 @@ minetest.register_node("dryplants:reed_roof_corner", {
 		}
 	},
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
 
 -----------------------------------------------------------------------------------------------
 -- Reed Roof Corner 2
 -----------------------------------------------------------------------------------------------
-minetest.register_node("dryplants:reed_roof_corner_2", {
+minetest.register_node("hades_dryplants:reed_roof_corner_2", {
 	description = S("Reed Roof Corner 2"),
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -378,5 +378,5 @@ minetest.register_node("dryplants:reed_roof_corner_2", {
 		}
 	},
 	groups = {snappy=3, flammable=2},
-	sounds = default.node_sound_leaves_defaults(),
+	sounds = hades_sounds.node_sound_leaves_defaults(),
 })
