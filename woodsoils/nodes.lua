@@ -12,8 +12,12 @@ minetest.register_node("hades_woodsoils:dirt_with_leaves_1", {
 	is_ground_content = true,
 	groups = {
 		crumbly=3,
-		soil=1--,
+		soil=1,
+		dirt=1,
 		--not_in_creative_inventory=1
+		woodsoil_next=1,
+		woodsoil=1,
+		bellow_fertilizer=2,
 	},
 	drop = 'hades_core:dirt',
 	sounds = hades_sounds.node_sound_dirt_defaults({
@@ -23,7 +27,9 @@ minetest.register_node("hades_woodsoils:dirt_with_leaves_1", {
 		base = "hades_woodsoils:dirt_with_leaves_1",
 		dry = "hades_farming:soil",
 		wet = "hades_farming:soil_wet"
-	}
+	},
+	_woodsoil_prev = "hades_core:dirt",
+	_woodsoil_next = "hades_woodsoils:dirt_with_leaves_2",
 })
 
 minetest.register_node("hades_woodsoils:dirt_with_leaves_2", {
@@ -35,8 +41,11 @@ minetest.register_node("hades_woodsoils:dirt_with_leaves_2", {
 	is_ground_content = true,
 	groups = {
 		crumbly=3,
-		soil=1--,
+		soil=1,
+		dirt=1,
 		--not_in_creative_inventory=1
+		woodsoil=1,
+		bellow_fertilizer=2,
 	},
 	drop = 'hades_core:dirt',
 	sounds = hades_sounds.node_sound_dirt_defaults({
@@ -46,11 +55,12 @@ minetest.register_node("hades_woodsoils:dirt_with_leaves_2", {
 		base = "hades_woodsoils:dirt_with_leaves_2",
 		dry = "hades_farming:soil",
 		wet = "hades_farming:soil_wet"
-	}
+	},
+	_woodsoil_prev = "hades_woodsoils:dirt_with_leaves_1",
 })
 
 minetest.register_node("hades_woodsoils:grass_with_leaves_1", {
-	description = S("Forest Soil 3"),
+	description = S("Forest Soil with Grass 1"),
 	paramtype2 = "color",
 	tiles = {
 		"hades_core_grass_cover_colorable.png",
@@ -69,8 +79,12 @@ minetest.register_node("hades_woodsoils:grass_with_leaves_1", {
 	groups = {
 		crumbly=3,
 		soil=1,
+		dirt=1,
 		--not_in_creative_inventory=1
 		dirt_with_grass = 1,
+		woodsoil_next=1,
+		woodsoil=1,
+		bellow_fertilizer=2,
 	},
 	drop = 'hades_core:dirt',
 	sounds = hades_sounds.node_sound_dirt_defaults({
@@ -80,11 +94,13 @@ minetest.register_node("hades_woodsoils:grass_with_leaves_1", {
 		base = "hades_woodsoils:grass_with_leaves_1",
 		dry = "hades_farming:soil",
 		wet = "hades_farming:soil_wet"
-	}
+	},
+	_woodsoil_prev = "hades_core:dirt_with_grass",
+	_woodsoil_next = "hades_woodsoils:grass_with_leaves_2",
 })
 
 minetest.register_node("hades_woodsoils:grass_with_leaves_2", {
-	description = S("Forest Soil 4"),
+	description = S("Forest Soil with Grass 2"),
 	paramtype2 = "color",
 	tiles = {
 		"hades_core_grass_cover_colorable.png",
@@ -103,8 +119,12 @@ minetest.register_node("hades_woodsoils:grass_with_leaves_2", {
 	groups = {
 		crumbly=3,
 		soil=1,
+		dirt=1,
 		--not_in_creative_inventory=1
 		dirt_with_grass = 1,
+		woodsoil_next=1,
+		woodsoil=1,
+		bellow_fertilizer=2,
 	},
 	drop = 'hades_core:dirt',
 	sounds = hades_sounds.node_sound_dirt_defaults({
@@ -114,7 +134,9 @@ minetest.register_node("hades_woodsoils:grass_with_leaves_2", {
 		base = "hades_woodsoils:grass_with_leaves_2",
 		dry = "hades_farming:soil",
 		wet = "hades_farming:soil_wet"
-	}
+	},
+	_woodsoil_prev = "hades_woodsoils:grass_with_leaves_1",
+	_woodsoil_next = "hades_woodsoils:dirt_with_leaves_2",
 })
 
 -- For compatibility with older stuff
